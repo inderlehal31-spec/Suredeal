@@ -1,34 +1,31 @@
-export default function Home() {
-  return (
-    <main style={{
-      background: "#0b0b0b",
-      color: "white",
-      height: "100vh",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      fontFamily: "Arial"
-    }}>
-      
-      <h1 style={{ fontSize: "40px", marginBottom: "10px" }}>
-        SUREDEAL
-      </h1>
+"use client";
 
-      <p style={{ marginBottom: "20px", color: "#aaa" }}>
+import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import Button from "../components/ui/Button";
+
+export default function Home() {
+  const router = useRouter();
+
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center text-center px-6">
+
+      <motion.h1 
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-4xl font-bold mb-4"
+      >
+        SUREDEAL
+      </motion.h1>
+
+      <p className="text-gray-400 mb-8">
         Secure. Smart. Billion Dollar Deals.
       </p>
 
-      <button style={{
-        padding: "12px 25px",
-        background: "#00ffcc",
-        border: "none",
-        borderRadius: "5px",
-        cursor: "pointer"
-      }}>
+      <Button onClick={() => router.push("/dashboard")}>
         Create Deal
-      </button>
+      </Button>
 
-    </main>
+    </div>
   );
 }
