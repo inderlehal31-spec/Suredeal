@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center text-center px-6">
 
-      <motion.h1 
+      <motion.h1
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         className="text-4xl font-bold mb-4"
