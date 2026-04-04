@@ -1,46 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import Button from "../components/ui/Button";
 
 export default function Home() {
-  const [showForm, setShowForm] = useState(false);
+  const router = useRouter();
 
   return (
-    <main style={{
-      background: "#0b0b0b",
-      color: "white",
-      height: "100vh",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center"
-    }}>
+    <div className="min-h-screen flex flex-col items-center justify-center text-center px-6">
 
-      <h1>SUREDEAL</h1>
-      <p>Secure. Smart. Billion Dollar Deals.</p>
-
-      <button
-        onClick={() => setShowForm(true)}
-        style={{
-          padding: "12px 25px",
-          background: "#00ffcc",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-          marginTop: "20px"
-        }}
+      <motion.h1 
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-4xl font-bold mb-4"
       >
+        SUREDEAL
+      </motion.h1>
+
+      <p className="text-gray-400 mb-8">
+        Secure. Smart. Billion Dollar Deals.
+      </p>
+
+      <Button onClick={() => router.push("/dashboard")}>
         Create Deal
-      </button>
+      </Button>
 
-      {showForm && (
-        <div style={{ marginTop: "20px" }}>
-          <input placeholder="Your Name" /><br /><br />
-          <input placeholder="Deal Details" /><br /><br />
-          <button>Submit</button>
-        </div>
-      )}
-
-    </main>
+    </div>
   );
 }
